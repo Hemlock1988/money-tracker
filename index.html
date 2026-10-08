@@ -14,6 +14,7 @@
         <header class="header">
             <h1>💰 Учёт средств</h1>
             <p class="subtitle">Помогает понять, куда уходят деньги</p>
+            <p class="version" id="headerVersion">v0.03 · beta</p>
         </header>
 
         <!-- ВЫБОР ПРОФИЛЯ -->
@@ -37,7 +38,10 @@
 
         <!-- ============ ПРОФИЛЬ: ЛИЧНЫЙ БЮДЖЕТ ============ -->
         <div class="profile hidden" id="profile-single">
-            <button class="back-btn" onclick="backToProfiles()">← Сменить профиль</button>
+            <div class="profile-header">
+                <span class="profile-current">👤 Личный бюджет</span>
+                <button class="back-btn" onclick="backToProfiles()">Сменить</button>
+            </div>
 
             <section class="card">
                 <h2>💵 Доходы</h2>
@@ -58,7 +62,10 @@
 
         <!-- ============ ПРОФИЛЬ: СЕМЬЯ ============ -->
         <div class="profile hidden" id="profile-family">
-            <button class="back-btn" onclick="backToProfiles()">← Сменить профиль</button>
+            <div class="profile-header">
+                <span class="profile-current">👨‍👩‍👧 Семья</span>
+                <button class="back-btn" onclick="backToProfiles()">Сменить</button>
+            </div>
 
             <section class="card">
                 <h2>💵 Доходы</h2>
@@ -82,7 +89,10 @@
 
         <!-- ============ ПРОФИЛЬ: РОДИТЕЛЬ-ОДИНОЧКА ============ -->
         <div class="profile hidden" id="profile-parent">
-            <button class="back-btn" onclick="backToProfiles()">← Сменить профиль</button>
+            <div class="profile-header">
+                <span class="profile-current">👩‍👦 Родитель-одиночка</span>
+                <button class="back-btn" onclick="backToProfiles()">Сменить</button>
+            </div>
 
             <section class="card">
                 <h2>💵 Доходы</h2>
@@ -176,6 +186,19 @@
 
         <!-- КНОПКА СБРОСА -->
         <button class="reset hidden" id="resetBtn" onclick="resetAll()">Сбросить данные профиля</button>
+
+        <!-- ПОДВАЛ -->
+        <footer class="footer">
+            <p>
+                Money Tracker <span id="footerVersion">v0.03</span>
+                · MIT License
+            </p>
+            <p>
+                <a href="https://github.com/Hemlock1988/money-tracker" target="_blank" rel="noopener">GitHub</a>
+                ·
+                <a href="https://github.com/Hemlock1988/money-tracker/issues" target="_blank" rel="noopener">Сообщить о проблеме</a>
+            </p>
+        </footer>
 
     </div>
 
