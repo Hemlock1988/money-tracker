@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учёт средств</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+
+        <!-- ЗАГОЛОВОК -->
+        <header class="header">
+            <h1>💰 Учёт средств</h1>
+            <p class="subtitle">Помогает понять, куда уходят деньги</p>
+        </header>
+
+        <!-- ВЫБОР ПРОФИЛЯ -->
+        <div class="profile-select" id="profileSelect">
+            <p class="profile-label">Выбери, что подходит тебе:</p>
+            <div class="profile-buttons">
+                <button class="profile-btn" data-profile="single">
+                    <span class="profile-emoji">👤</span>
+                    <span class="profile-name">Личный бюджет</span>
+                </button>
+                <button class="profile-btn" data-profile="family">
+                    <span class="profile-emoji">👨‍👩‍👧</span>
+                    <span class="profile-name">Семья</span>
+                </button>
+                <button class="profile-btn" data-profile="parent">
+                    <span class="profile-emoji">👩‍👦</span>
+                    <span class="profile-name">Родитель-одиночка</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ============ ПРОФИЛЬ: ЛИЧНЫЙ БЮДЖЕТ ============ -->
+        <div class="profile hidden" id="profile-single">
+            <button class="back-btn" onclick="backToProfiles()">← Сменить профиль</button>
+
+            <section class="card">
+                <h2>💵 Доходы</h2>
+                <label>Зарплата<input type="number" data-field="salary" placeholder="0"></label>
+                <label>Аванс<input type="number" data-field="advance" placeholder="0"></label>
+                <label>Пособие<input type="number" data-field="benefits" placeholder="0"></label>
+            </section>
+
+            <section class="card">
+                <h2>💸 Обязательные расходы</h2>
+                <label>Коммуналка<input type="number" data-field="utilities" placeholder="0"></label>
+                <label>Аренда / ипотека<input type="number" data-field="rent" placeholder="0"></label>
+                <label>Кредиты<input type="number" data-field="credits" placeholder="0"></label>
+                <label>Подписки<input type="number" data-field="subscriptions" placeholder="0"></label>
+                <label>Образование<input type="number" data-field="school" placeholder="0"></label>
+            </section>
+        </div>
+
+        <!-- ============ ПРОФИЛЬ: СЕМЬЯ ============ -->
+        <div class="profile hidden" id="profile-family">
+            <button class="back-btn" onclick="backToProfiles()">← Сменить профиль</button>
+
+            <section class="card">
+                <h2>💵 Доходы</h2>
+                <label>Зарплата (первый)<input type="number" data-field="salary" placeholder="0"></label>
+                <label>Аванс (первый)<input type="number" data-field="advance" placeholder="0"></label>
+                <label>Зарплата (второй)<input type="number" data-field="salary2" placeholder="0"></label>
+                <label>Аванс (второй)<input type="number" data-field="advance2" placeholder="0"></label>
+                <label>Пособие<input type="number" data-field="benefits" placeholder="0"></label>
+                <label>Алименты<input type="number" data-field="alimony" placeholder="0"></label>
+            </section>
+
+            <section class="card">
+                <h2>💸 Обязательные расходы</h2>
+                <label>Коммуналка<input type="number" data-field="utilities" placeholder="0"></label>
+                <label>Аренда / ипотека<input type="number" data-field="rent" placeholder="0"></label>
+                <label>Кредиты<input type="number" data-field="credits" placeholder="0"></label>
+                <label>Подписки<input type="number" data-field="subscriptions" placeholder="0"></label>
+                <label>Образование<input type="number" data-field="school" placeholder="0"></label>
+            </section>
+        </div>
+
+        <!-- ============ ПРОФИЛЬ: РОДИТЕЛЬ-ОДИНОЧКА ============ -->
+        <div class="profile hidden" id="profile-parent">
+            <button class="back-btn" onclick="backToProfiles()">← Сменить профиль</button>
+
+            <section class="card">
+                <h2>💵 Доходы</h2>
+                <label>Зарплата<input type="number" data-field="salary" placeholder="0"></label>
+                <label>Аванс<input type="number" data-field="advance" placeholder="0"></label>
+                <label>Пособие<input type="number" data-field="benefits" placeholder="0"></label>
+                <label>Алименты<input type="number" data-field="alimony" placeholder="0"></label>
+            </section>
+
+            <section class="card">
+                <h2>💸 Обязательные расходы</h2>
+                <label>Коммуналка<input type="number" data-field="utilities" placeholder="0"></label>
+                <label>Аренда / ипотека<input type="number" data-field="rent" placeholder="0"></label>
+                <label>Кредиты<input type="number" data-field="credits" placeholder="0"></label>
+                <label>Подписки<input type="number" data-field="subscriptions" placeholder="0"></label>
+                <label>Образование<input type="number" data-field="school" placeholder="0"></label>
+            </section>
+        </div>
+
+        <!-- ============ ПОВСЕДНЕВНЫЕ РАСХОДЫ ============ -->
+        <section class="card hidden" id="dailyExpensesCard">
+            <h2>🛒 Повседневные расходы</h2>
+
+            <label class="limit-label">
+                Лимит на месяц (₽)
+                <input type="number" data-field="limit" placeholder="0">
+            </label>
+
+            <div class="list-total">
+                Всего потрачено: <strong id="dailyExpensesTotal">0 ₽</strong>
+            </div>
+
+            <ul class="op-list" id="dailyExpensesList"></ul>
+
+            <button class="add-btn expense" onclick="openModal('expense')">
+                + Добавить расход
+            </button>
+        </section>
+
+        <!-- ============ ПОВСЕДНЕВНЫЕ ДОХОДЫ ============ -->
+        <section class="card hidden" id="dailyIncomesCard">
+            <h2>💰 Повседневные доходы</h2>
+
+            <div class="list-total">
+                Всего получено: <strong id="dailyIncomesTotal">0 ₽</strong>
+            </div>
+
+            <ul class="op-list" id="dailyIncomesList"></ul>
+
+            <button class="add-btn income" onclick="openModal('income')">
+                + Добавить доход
+            </button>
+        </section>
+
+        <!-- ============ ЛИМИТ ============ -->
+        <section class="card hidden" id="limitCard">
+            <h2>🎯 Лимит</h2>
+
+            <div class="row"><span>Лимит:</span><strong id="limitValue">0 ₽</strong></div>
+            <div class="row"><span>Потрачено:</span><strong id="limitSpent">0 ₽</strong></div>
+            <div class="row big"><span>Осталось:</span><strong id="limitLeft">0 ₽</strong></div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="limitProgress"></div>
+            </div>
+        </section>
+
+        <!-- ============ ИТОГ ============ -->
+        <section class="card result hidden" id="resultCard">
+            <h2>📊 Итог за месяц</h2>
+
+            <div class="row"><span>Доходы:</span><strong data-result="totalIncome">0 ₽</strong></div>
+            <div class="row"><span>Повседневные доходы:</span><strong data-result="totalDailyIncome">0 ₽</strong></div>
+            <div class="row carry-row">
+                <span>Остаток с прошлого:</span>
+                <input type="number" data-field="carryOver" placeholder="0" class="carry-input">
+            </div>
+
+            <hr>
+
+            <div class="row"><span>Обязательные:</span><strong data-result="totalFixed">0 ₽</strong></div>
+            <div class="row"><span>Повседневные расходы:</span><strong data-result="totalDailyExpense">0 ₽</strong></div>
+
+            <hr>
+
+            <div class="row big"><span>Свободный остаток:</span><strong data-result="balance">0 ₽</strong></div>
+            <div class="row"><span>В день:</span><strong data-result="perDay">0 ₽</strong></div>
+
+            <div class="status" id="status"></div>
+        </section>
+
+        <!-- КНОПКА СБРОСА -->
+        <button class="reset hidden" id="resetBtn" onclick="resetAll()">Сбросить данные профиля</button>
+
+    </div>
+
+    <!-- ============ МОДАЛЬНОЕ ОКНО ============ -->
+    <div class="modal hidden" id="operationModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Новая операция</h2>
+
+            <label>
+                Сумма (₽)
+                <input type="number" id="modalAmount" placeholder="0" step="0.01">
+            </label>
+
+            <label>
+                Комментарий (необязательно)
+                <input type="text" id="modalComment" placeholder="например, продукты">
+            </label>
+
+            <div class="modal-actions">
+                <button class="cancel-btn" onclick="closeModal()">Отмена</button>
+                <button class="save-btn" id="modalSaveBtn">Добавить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

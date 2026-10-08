@@ -1,0 +1,277 @@
+/* === СБРОС === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === ПЕРЕМЕННЫЕ === */
+:root {
+    --bg: #f4f6fb;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+
+    --green: #10b981;
+    --green-soft: #ecfdf5;
+    --yellow: #f59e0b;
+    --yellow-soft: #fffbeb;
+    --red: #ef4444;
+    --red-soft: #fef2f2;
+
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px;
+    line-height: 1.5;
+}
+
+.app { max-width: 560px; margin: 0 auto; }
+
+/* === ШАПКА === */
+.header { text-align: center; margin-bottom: 28px; }
+.header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+.subtitle { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+
+/* === ВЫБОР ПРОФИЛЯ === */
+.profile-select {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+.profile-label {
+    font-size: 15px; color: var(--text-muted);
+    text-align: center; margin-bottom: 16px;
+}
+.profile-buttons { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.profile-btn {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 20px; background: #f9fafb;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer; font-size: 16px; color: var(--text);
+    transition: all 0.2s; text-align: left; font-family: inherit;
+}
+.profile-btn:hover {
+    background: #eef2ff; border-color: var(--primary);
+    transform: translateY(-2px);
+}
+.profile-emoji { font-size: 26px; }
+.profile-name  { font-weight: 600; }
+
+/* === НАЗАД === */
+.back-btn {
+    background: none; border: none; color: var(--primary);
+    font-size: 14px; cursor: pointer; margin-bottom: 16px;
+    padding: 6px 0; font-family: inherit;
+}
+.back-btn:hover { text-decoration: underline; }
+
+/* === КАРТОЧКИ === */
+.card {
+    background: var(--card-bg);
+    padding: 22px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+.card h2 {
+    font-size: 17px; font-weight: 600;
+    margin-bottom: 16px; color: var(--text);
+}
+
+/* === ИНПУТЫ === */
+label {
+    display: block; font-size: 14px;
+    color: var(--text-muted); margin-bottom: 14px;
+}
+input[type="number"],
+input[type="text"] {
+    width: 100%; margin-top: 6px; padding: 12px 14px;
+    font-size: 16px; background: #f9fafb; color: var(--text);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    outline: none; transition: all 0.15s;
+    font-family: inherit;
+}
+input:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+}
+input[type="number"] { -moz-appearance: textfield; }
+
+/* === ИТОГИ СПИСКОВ === */
+.list-total {
+    display: flex; justify-content: space-between;
+    padding: 10px 12px; background: #f9fafb;
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px; font-size: 15px;
+    color: var(--text-muted);
+}
+.list-total strong { color: var(--text); font-size: 16px; }
+
+/* === СПИСОК ОПЕРАЦИЙ === */
+.op-list { list-style: none; margin-bottom: 12px; }
+
+.op-item {
+    display: flex; justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px; background: #f9fafb;
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px; font-size: 14px;
+}
+
+.op-text { flex: 1; }
+.op-amount { font-weight: 600; margin-right: 10px; }
+.op-amount.expense { color: var(--red); }
+.op-amount.income  { color: var(--green); }
+
+.op-delete {
+    background: none; border: none; color: var(--text-muted);
+    cursor: pointer; font-size: 16px; padding: 4px 8px;
+    border-radius: 6px; transition: all 0.15s;
+}
+.op-delete:hover { background: #fee2e2; color: var(--red); }
+
+.empty-ops {
+    color: var(--text-muted); font-size: 14px;
+    text-align: center; padding: 12px;
+}
+
+/* === КНОПКИ ДОБАВЛЕНИЯ === */
+.add-btn {
+    width: 100%; padding: 14px; font-size: 15px;
+    font-weight: 600; border: none; cursor: pointer;
+    border-radius: var(--radius-sm); font-family: inherit;
+    transition: all 0.2s; color: #fff;
+}
+.add-btn.expense { background: var(--primary); }
+.add-btn.expense:hover { background: var(--primary-hover); }
+.add-btn.income  { background: var(--green); }
+.add-btn.income:hover { background: #0e9f6e; }
+
+/* === ПРОГРЕСС-БАР === */
+.progress-bar {
+    height: 10px; background: #f3f4f6;
+    border-radius: 5px; overflow: hidden;
+    margin-top: 12px;
+}
+.progress-fill {
+    height: 100%; background: var(--green);
+    width: 0%; transition: width 0.4s, background 0.4s;
+}
+.progress-fill.warning { background: var(--yellow); }
+.progress-fill.danger  { background: var(--red); }
+
+/* === ИТОГ === */
+.result .row {
+    display: flex; justify-content: space-between;
+    align-items: center; padding: 8px 0; font-size: 15px;
+}
+.result .row span { color: var(--text-muted); }
+.result .row.big {
+    font-size: 18px; padding-top: 12px;
+}
+.result .row.big span { color: var(--text); }
+.result .row.big strong {
+    font-size: 22px; color: var(--primary);
+}
+
+/* === ОСТАТОК С ПРОШЛОГО === */
+.carry-row { gap: 10px; }
+.carry-input {
+    width: 130px !important;
+    margin-top: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    text-align: right;
+}
+
+hr {
+    border: none; border-top: 1px solid var(--border);
+    margin: 12px 0;
+}
+
+/* === СВЕТОФОР === */
+.status {
+    margin-top: 18px; padding: 14px;
+    border-radius: var(--radius-sm);
+    text-align: center; font-weight: 600;
+    font-size: 15px; display: none;
+}
+.status.show { display: block; }
+.status.green  { background: var(--green-soft);  color: #065f46; }
+.status.yellow { background: var(--yellow-soft); color: #92400e; }
+.status.red    { background: var(--red-soft);    color: #991b1b; }
+
+/* === КНОПКА СБРОСА === */
+.reset {
+    width: 100%; padding: 14px; font-size: 15px;
+    font-weight: 600; background: transparent;
+    color: var(--red); border: 1.5px solid var(--red);
+    border-radius: var(--radius-sm); cursor: pointer;
+    transition: all 0.2s; font-family: inherit; margin-top: 8px;
+}
+.reset:hover { background: var(--red); color: #fff; }
+
+/* === УТИЛИТА === */
+.hidden { display: none !important; }
+
+/* === МОДАЛКА === */
+.modal {
+    position: fixed; inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100; padding: 20px;
+}
+.modal-content {
+    background: var(--card-bg); padding: 24px;
+    border-radius: var(--radius); width: 100%;
+    max-width: 420px; max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+.modal-content h2 { margin-bottom: 18px; font-size: 20px; }
+
+.modal-actions {
+    display: flex; gap: 10px; margin-top: 8px;
+}
+.cancel-btn, .save-btn {
+    flex: 1; padding: 14px; font-size: 15px;
+    font-weight: 600; border-radius: var(--radius-sm);
+    cursor: pointer; font-family: inherit;
+    transition: all 0.15s; border: none;
+}
+.cancel-btn { background: #f3f4f6; color: var(--text); }
+.cancel-btn:hover { background: #e5e7eb; }
+.save-btn { background: var(--primary); color: #fff; }
+.save-btn:hover { background: var(--primary-hover); }
+.save-btn.income { background: var(--green); }
+.save-btn.income:hover { background: #0e9f6e; }
+
+/* === МОБИЛЬНАЯ АДАПТАЦИЯ === */
+@media (max-width: 480px) {
+    .header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .profile-select { padding: 18px; }
+    .carry-input { width: 110px !important; }
+}
