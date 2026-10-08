@@ -1,5 +1,9 @@
 # 💰 Money Tracker
 
+![Version](https://img.shields.io/badge/version-0.03-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-beta-yellow)
+
 Простой и удобный калькулятор для учёта личных средств. Работает прямо в браузере, не требует регистрации, данные хранятся только у тебя.
 
 ## !Скриншот калькулятора <img width="812" height="616" alt="Image" src="https://github.com/user-attachments/assets/d70ad2d3-2d56-4dc6-bdd7-fb65c0b8834e" />
